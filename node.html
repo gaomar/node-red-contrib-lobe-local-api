@@ -1,0 +1,53 @@
+<script type="text/javascript">
+    RED.nodes.registerType('lobe-local',{
+        category: 'analysis-function',
+        color: '#07dbb3',
+        defaults: {
+            name: {value: ""},
+            modelUrl: {value: "", required:true},
+            base64Image:{value: ""},
+            output: { value: "best", required:true},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name||"lobe-local";
+        }
+    });
+ </script>
+ 
+ <script type="text/html" data-template-name="lobe-local">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-modelUrl">
+            <i class="fa fa-globe" style="margin-right: 6px;"></i>
+            Local URL
+        </label>
+        <input type="text" id="node-input-modelUrl" placeholder="http://localhost:[...]/predict/[...]">
+    </div>
+    <div class="form-row">
+        <label for="node-input-base64Image">
+            <i class="fa fa-picture-o" style="margin-right: 6px;"></i>
+            Base64
+        </label>
+        <input type="text" id="node-input-base64Image" placeholder="Mustache可 ※空白はpayloadから取得">
+    </div>
+    <div class="form-row">
+        <label for="node-input-output">
+            <i class="fa fa-sign-out" style="margin-right: 6px;"></i>
+            出力形式
+        </label>
+        <select style="width: 200px" id="node-input-output">
+            <option value="best" >一番の予測結果を返す</option>
+            <option value="all" >全結果予測を返す</option>
+        </select>
+    </div>
+ </script>
+ 
+ <script type="text/html" data-help-name="line-image">
+    <p>与えられた画像をLobeで解析した結果を返します</p>
+ </script>
